@@ -33,7 +33,14 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Empty", Toast.LENGTH_SHORT).show()
             } else {
                 mAuth.createUserWithEmailAndPassword(email, password)
-                }
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this, "მომხმარებელი წარმატებით დარეგისტრირდა", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
             }
         }
     }
+}
